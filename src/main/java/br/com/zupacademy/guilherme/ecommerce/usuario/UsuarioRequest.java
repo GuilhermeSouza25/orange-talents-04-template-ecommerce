@@ -4,10 +4,13 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import br.com.zupacademy.guilherme.ecommerce.shared.validators.UniqueValue;
+
 public class UsuarioRequest {
 	
 	@NotBlank
 	@Email
+	@UniqueValue(domainClass = Usuario.class, fieldName = "login")
 	private String login;
 	
 	@NotBlank
@@ -20,7 +23,12 @@ public class UsuarioRequest {
 		this.senha = senha;
 	}
 
+	public String getLogin() {
+		return login;
+	}
+	
 	public Usuario converter() {
-		return new Usuario(login, senha);
+		//como este ponto do codigo sabe que deve passar a senha limpa?
+		return new Usuario(login, new SenhaLimpa(this.senha));
 	}
 }
