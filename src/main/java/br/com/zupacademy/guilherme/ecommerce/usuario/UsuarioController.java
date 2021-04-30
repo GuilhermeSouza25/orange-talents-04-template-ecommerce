@@ -22,11 +22,11 @@ public class UsuarioController {
 	@Autowired
 	EmailDuplicadoValidator emailDuplicadoValidator;
 	
-//	@InitBinder
-//	public void init(WebDataBinder binder) {
-//	
-//		binder.addValidators(emailDuplicadoValidator);
-//	}
+	@InitBinder
+	public void init(WebDataBinder binder) {
+	
+		binder.addValidators(emailDuplicadoValidator);
+	}
 	
 	@PostMapping("/api/usuario")
 	@Transactional

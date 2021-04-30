@@ -1,7 +1,5 @@
 package br.com.zupacademy.guilherme.ecommerce.usuario;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Component;
@@ -33,18 +31,22 @@ public class EmailDuplicadoValidator implements Validator {
 
 		UsuarioRequest request = (UsuarioRequest) target;
 		
-		List<?> resultList = manager
-    			.createQuery("SELECT 1 FROM Usuario WHERE login = :value")
+		Boolean usuarioExistente = (Boolean) manager
+    			.createQuery("SELECT count(u) > 0 FROM Usuario u WHERE login = :value")
     			.setParameter("value", request.getLogin())
-    			.getResultList();
+    			.getSingleResult();
 		
-		//Optional<Usuario> usuario = repository.findByLogin(request.getLogin());
-		
-
-		if (!resultList.isEmpty()) {
+		if(usuarioExistente) {
 			errors.rejectValue("login", null,
 					"Já existe um(a) outro(a) usuario(a) com o mesmo email");
 		}
+		
+		//Optional<Usuario> usuario = repository.findByLogin(request.getLogin());
+
+//		if (usuario.isPresent()) {
+//			errors.rejectValue("login", null,
+//					"Já existe um(a) outro(a) usuario(a) com o mesmo email");
+//		}
 	}
 
 }

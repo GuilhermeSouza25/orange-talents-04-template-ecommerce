@@ -4,13 +4,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import br.com.zupacademy.guilherme.ecommerce.shared.validators.UniqueValue;
-
 public class UsuarioRequest {
 	
 	@NotBlank
 	@Email
-	@UniqueValue(domainClass = Usuario.class, fieldName = "login")
+	//@UniqueValue(domainClass = Usuario.class, fieldName = "login")
 	private String login;
 	
 	@NotBlank
