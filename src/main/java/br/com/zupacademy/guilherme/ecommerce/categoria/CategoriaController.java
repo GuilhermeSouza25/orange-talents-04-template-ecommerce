@@ -18,7 +18,8 @@ public class CategoriaController {
 	
 	@PostMapping("/api/categoria")
 	@Transactional
-	public ResponseEntity<?> cadastrar(@RequestBody @Valid CategoriaRequest request) {
+	public ResponseEntity<?> cadastrar(
+			@RequestBody @Valid CategoriaRequest request) {
 		
 		Categoria categoria = request.converter(manager);
 		

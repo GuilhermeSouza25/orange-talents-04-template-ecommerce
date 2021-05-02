@@ -1,8 +1,11 @@
-package br.com.zupacademy.guilherme.ecommerce.usuario;
+package br.com.zupacademy.guilherme.ecommerce.usuario.request;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import br.com.zupacademy.guilherme.ecommerce.usuario.SenhaLimpa;
+import br.com.zupacademy.guilherme.ecommerce.usuario.modelo.Usuario;
 
 public class UsuarioRequest {
 	
@@ -26,6 +29,7 @@ public class UsuarioRequest {
 	}
 	
 	public Usuario converter() {
+		
 		//como este ponto do codigo sabe que deve passar a senha limpa?
 		return new Usuario(login, new SenhaLimpa(this.senha));
 	}

@@ -1,4 +1,4 @@
-package br.com.zupacademy.guilherme.ecommerce.usuario;
+package br.com.zupacademy.guilherme.ecommerce.usuario.controller;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.zupacademy.guilherme.ecommerce.usuario.EmailDuplicadoValidator;
+import br.com.zupacademy.guilherme.ecommerce.usuario.modelo.Usuario;
+import br.com.zupacademy.guilherme.ecommerce.usuario.request.UsuarioRequest;
 
 @RestController
 public class UsuarioController {
