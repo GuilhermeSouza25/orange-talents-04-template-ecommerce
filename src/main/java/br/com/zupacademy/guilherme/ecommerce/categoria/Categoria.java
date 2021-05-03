@@ -26,6 +26,7 @@ public class Categoria {
 		this.nome = nome;
 	}
 	
+	
 	public void setCategoriaMae(Categoria categoriaMae) {
 		this.categoriaMae = categoriaMae;
 	}
